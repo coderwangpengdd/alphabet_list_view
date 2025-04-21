@@ -27,6 +27,7 @@ class DefaultAlphabetListHeader extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 24, 0, 8),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
+          color: backgroundColor,
           border:
               Border(bottom: BorderSide(width: 1, color: Color(0xFFECEAEA)))),
       child: Center(

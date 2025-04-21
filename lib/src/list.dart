@@ -126,6 +126,7 @@ class _AlphabetListState extends State<AlphabetList> {
                                     ?.call(context, item.tag) ??
                                 DefaultAlphabetListHeader(
                                   symbol: item.tag,
+                                  backgroundColor: Colors.white,
                                   style: widget.textStyle,
                                 ),
                           )
