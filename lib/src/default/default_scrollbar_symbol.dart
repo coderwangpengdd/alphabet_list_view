@@ -1,3 +1,11 @@
+/*
+ * @Author: 王鹏 peng.wang@bigmarker.com
+ * @Date: 2025-04-21 14:46:32
+ * @LastEditors: 王鹏 peng.wang@bigmarker.com
+ * @LastEditTime: 2025-04-21 15:41:11
+ * @FilePath: /example/Users/wangxiaoying/Desktop/bigmarker/alphabet_list_view/lib/src/default/default_scrollbar_symbol.dart
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import 'package:alphabet_list_view/alphabet_list_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -5,14 +13,19 @@ import 'package:flutter/material.dart';
 /// DefaultScrollbarSymbol
 class DefaultScrollbarSymbol extends StatelessWidget {
   /// Constructor of DefaultScrollbarSymbol
-  const DefaultScrollbarSymbol({
-    required this.symbol,
-    required this.state,
-    super.key,
-    this.styleActive,
-    this.styleInactive,
-    this.styleDeactivated,
-  });
+  const DefaultScrollbarSymbol(
+      {required this.symbol,
+      required this.state,
+      super.key,
+      this.styleActive,
+      this.styleInactive,
+      this.styleDeactivated,
+      this.fontSize = 10,
+      this.fontFamily});
+
+  final String? fontFamily;
+
+  final double? fontSize;
 
   /// symbol
   final String symbol;
@@ -33,11 +46,18 @@ class DefaultScrollbarSymbol extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = switch (state) {
       AlphabetScrollbarItemState.active => styleActive ??
-          TextStyle(color: Theme.of(context).colorScheme.secondary),
-      AlphabetScrollbarItemState.inactive =>
-        styleInactive ?? const TextStyle(color: Colors.black),
-      AlphabetScrollbarItemState.deactivated =>
-        styleDeactivated ?? const TextStyle(color: Colors.grey),
+          TextStyle(
+              color: Color(0xFF883FFF),
+              fontSize: fontSize,
+              fontFamily: fontFamily),
+      AlphabetScrollbarItemState.inactive => styleInactive ??
+          TextStyle(
+              color: Color(0xFF7D6F8A),
+              fontSize: fontSize,
+              fontFamily: fontFamily),
+      AlphabetScrollbarItemState.deactivated => styleDeactivated ??
+          TextStyle(
+              color: Colors.grey, fontSize: fontSize, fontFamily: fontFamily),
     };
 
     return FittedBox(

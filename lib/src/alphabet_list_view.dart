@@ -11,12 +11,27 @@ import 'package:flutter/widgets.dart';
 /// Add [AlphabetListViewOptions] to make adjustments.
 class AlphabetListView extends StatefulWidget {
   /// Constructor of AlphabetListView
-  const AlphabetListView({
-    required this.items,
-    super.key,
-    this.options = const AlphabetListViewOptions(),
-    this.scrollController,
-  });
+  const AlphabetListView(
+      {required this.items,
+      super.key,
+      this.options = const AlphabetListViewOptions(),
+      this.scrollController,
+      this.top = 0,
+      this.fontFamily,
+      this.fontSize = 10,
+      this.textStyle});
+
+  // 侧边栏字体样式
+  final String? fontFamily;
+
+  // 侧边栏字体大小
+  final double? fontSize;
+
+  // 侧边栏距离顶部距离
+  final double? top;
+
+  // 吸顶的文字样式
+  final TextStyle? textStyle;
 
   /// List items
   final Iterable<AlphabetListViewItemGroup> items;
@@ -94,16 +109,20 @@ class _AlphabetListViewState extends State<AlphabetListView> {
                 alphabetListOptions: widget.options.listOptions,
                 symbolChangeNotifierList: _symbolChangeNotifierList,
                 symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
+                textStyle: widget.textStyle,
               ),
-              AlphabetSymbolOverlay(
-                alphabetOverlayOptions: widget.options.overlayOptions,
-                symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
-              ),
+              // AlphabetSymbolOverlay(
+              //   alphabetOverlayOptions: widget.options.overlayOptions,
+              //   symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
+              // ),
             ],
           ),
         ),
         AlphabetScrollbar(
           items: _sortedItems,
+          top: widget.top,
+          fontFamily: widget.fontFamily,
+          fontSize: widget.fontSize,
           alphabetScrollbarOptions: widget.options.scrollbarOptions,
           symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
           symbolChangeNotifierList: _symbolChangeNotifierList,

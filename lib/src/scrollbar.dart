@@ -11,9 +11,18 @@ class AlphabetScrollbar extends StatefulWidget {
     required this.items,
     required this.symbolChangeNotifierScrollbar,
     required this.symbolChangeNotifierList,
+    this.top = 0,
     super.key,
+    this.fontFamily,
+    this.fontSize = 10,
     this.alphabetScrollbarOptions = const ScrollbarOptions(),
   });
+
+  final String? fontFamily;
+
+  final double? fontSize;
+
+  final double? top;
 
   /// List of Groups
   final List<AlphabetListViewItemGroup> items;
@@ -79,6 +88,7 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
       padding: widget.alphabetScrollbarOptions.padding ?? EdgeInsets.zero,
       color: widget.alphabetScrollbarOptions.backgroundColor,
       width: widget.alphabetScrollbarOptions.width,
+      margin: EdgeInsets.only(top: widget.top ?? 0),
       child: Semantics(
         explicitChildNodes: true,
         child: Listener(
@@ -91,12 +101,14 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
             mainAxisSize: MainAxisSize.min,
             children: _uniqueItems
                 .map(
-                  (symbol) => Flexible(
-                    child: Semantics(
-                      button: true,
+                  (symbol) => Semantics(
+                    button: true,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 8, right: 24),
                       child: Container(
                         color: Colors.transparent,
-                        width: widget.alphabetScrollbarOptions.width,
+                        alignment: Alignment.center,
+                        width: 12,
                         key: _symbolKeys[symbol],
                         child:
                             widget.alphabetScrollbarOptions.symbolBuilder?.call(
@@ -106,6 +118,8 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
                                 ) ??
                                 DefaultScrollbarSymbol(
                                   symbol: symbol,
+                                  fontFamily: widget.fontFamily,
+                                  fontSize: widget.fontSize,
                                   state: _getSymbolState(symbol),
                                 ),
                       ),

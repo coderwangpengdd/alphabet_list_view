@@ -1,3 +1,11 @@
+/*
+ * @Author: 王鹏 peng.wang@bigmarker.com
+ * @Date: 2025-04-21 14:46:32
+ * @LastEditors: 王鹏 peng.wang@bigmarker.com
+ * @LastEditTime: 2025-04-21 15:51:25
+ * @FilePath: /example/lib/pages/default.dart
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import 'package:alphabet_list_view/alphabet_list_view.dart';
 import 'package:alphabet_list_view_example/repository.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +15,14 @@ class ExampleDefault extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlphabetListView(
-      items: _animals,
+    return Padding(
+      padding: EdgeInsets.only(left: 24),
+      child: AlphabetListView(
+        items: _animals,
+        top: 25,
+        options: AlphabetListViewOptions(
+            scrollbarOptions: ScrollbarOptions(width: 44)),
+      ),
     );
   }
 

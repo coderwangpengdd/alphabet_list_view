@@ -24,15 +24,22 @@ class DefaultAlphabetListHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 50,
-      color: backgroundColor ?? Theme.of(context).colorScheme.primary,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.fromLTRB(0, 24, 0, 8),
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+          border:
+              Border(bottom: BorderSide(width: 1, color: Color(0xFFECEAEA)))),
       child: Center(
         child: SizedBox(
           width: double.infinity,
           child: Text(
             symbol,
             style: style ??
-                const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                const TextStyle(
+                    color: Color(0xFFAFABAB),
+                    letterSpacing: -0.18,
+                    height: 1,
+                    fontSize: 18),
           ),
         ),
       ),

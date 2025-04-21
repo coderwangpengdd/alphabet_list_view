@@ -13,9 +13,12 @@ class AlphabetList extends StatefulWidget {
     required this.scrollController,
     required this.symbolChangeNotifierList,
     required this.symbolChangeNotifierScrollbar,
+    this.textStyle,
     super.key,
     this.alphabetListOptions = const ListOptions(),
   });
+
+  final TextStyle? textStyle;
 
   /// List of item groups
   final List<AlphabetListViewItemGroup> items;
@@ -123,6 +126,7 @@ class _AlphabetListState extends State<AlphabetList> {
                                     ?.call(context, item.tag) ??
                                 DefaultAlphabetListHeader(
                                   symbol: item.tag,
+                                  style: widget.textStyle,
                                 ),
                           )
                         : const SizedBox.shrink();
