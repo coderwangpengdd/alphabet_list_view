@@ -103,29 +103,36 @@ class _AlphabetListViewState extends State<AlphabetListView> {
         Expanded(
           child: Stack(
             children: [
-              AlphabetList(
-                items: _sortedItems,
-                scrollController: _scrollController,
-                alphabetListOptions: widget.options.listOptions,
-                symbolChangeNotifierList: _symbolChangeNotifierList,
-                symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
-                textStyle: widget.textStyle,
+              Padding(
+                padding: EdgeInsets.only(
+                    right: widget.options.scrollbarOptions.width),
+                child: AlphabetList(
+                  items: _sortedItems,
+                  scrollController: _scrollController,
+                  alphabetListOptions: widget.options.listOptions,
+                  symbolChangeNotifierList: _symbolChangeNotifierList,
+                  symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
+                  textStyle: widget.textStyle,
+                ),
               ),
               // AlphabetSymbolOverlay(
               //   alphabetOverlayOptions: widget.options.overlayOptions,
               //   symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
               // ),
+              Positioned(
+                right: 0,
+                child: AlphabetScrollbar(
+                  items: _sortedItems,
+                  top: widget.top,
+                  fontFamily: widget.fontFamily,
+                  fontSize: widget.fontSize,
+                  alphabetScrollbarOptions: widget.options.scrollbarOptions,
+                  symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
+                  symbolChangeNotifierList: _symbolChangeNotifierList,
+                ),
+              )
             ],
           ),
-        ),
-        AlphabetScrollbar(
-          items: _sortedItems,
-          top: widget.top,
-          fontFamily: widget.fontFamily,
-          fontSize: widget.fontSize,
-          alphabetScrollbarOptions: widget.options.scrollbarOptions,
-          symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
-          symbolChangeNotifierList: _symbolChangeNotifierList,
         ),
       ],
     );
