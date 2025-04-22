@@ -19,6 +19,7 @@ class AlphabetListView extends StatefulWidget {
       this.top = 0,
       this.fontFamily,
       this.fontSize = 10,
+      this.headerColor,
       this.textStyle});
 
   // 侧边栏字体样式
@@ -29,6 +30,8 @@ class AlphabetListView extends StatefulWidget {
 
   // 侧边栏距离顶部距离
   final double? top;
+
+  final Color? headerColor;
 
   // 吸顶的文字样式
   final TextStyle? textStyle;
@@ -108,6 +111,7 @@ class _AlphabetListViewState extends State<AlphabetListView> {
             symbolChangeNotifierList: _symbolChangeNotifierList,
             symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
             textStyle: widget.textStyle,
+            headerColor: widget.headerColor,
           ),
         ),
         // AlphabetSymbolOverlay(
