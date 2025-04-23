@@ -20,7 +20,10 @@ class AlphabetListView extends StatefulWidget {
       this.fontFamily,
       this.fontSize = 10,
       this.headerColor,
+      this.headerPadding,
       this.textStyle});
+
+  final EdgeInsetsGeometry? headerPadding;
 
   // 侧边栏字体样式
   final String? fontFamily;
@@ -112,6 +115,7 @@ class _AlphabetListViewState extends State<AlphabetListView> {
             symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
             textStyle: widget.textStyle,
             headerColor: widget.headerColor,
+            headerPadding: widget.headerPadding,
           ),
         ),
         // AlphabetSymbolOverlay(

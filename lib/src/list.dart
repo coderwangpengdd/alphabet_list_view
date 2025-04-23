@@ -15,9 +15,12 @@ class AlphabetList extends StatefulWidget {
     required this.symbolChangeNotifierScrollbar,
     this.textStyle,
     this.headerColor,
+    this.headerPadding,
     super.key,
     this.alphabetListOptions = const ListOptions(),
   });
+
+  final EdgeInsetsGeometry? headerPadding;
 
   final Color? headerColor;
 
@@ -131,6 +134,7 @@ class _AlphabetListState extends State<AlphabetList> {
                                     ?.call(context, item.tag) ??
                                 DefaultAlphabetListHeader(
                                   symbol: item.tag,
+                                  headerPadding: widget.headerPadding,
                                   backgroundColor: widget.headerColor,
                                   style: widget.textStyle,
                                 ),

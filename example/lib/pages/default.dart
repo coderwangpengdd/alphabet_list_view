@@ -2,7 +2,7 @@
  * @Author: 王鹏 peng.wang@bigmarker.com
  * @Date: 2025-04-21 14:46:32
  * @LastEditors: 王鹏 peng.wang@bigmarker.com
- * @LastEditTime: 2025-04-23 09:06:10
+ * @LastEditTime: 2025-04-23 17:35:12
  * @FilePath: /example/lib/pages/default.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -20,6 +20,7 @@ class ExampleDefault extends StatelessWidget {
       child: AlphabetListView(
         items: _animals,
         top: 25,
+        headerPadding: EdgeInsets.fromLTRB(0, 8, 0, 8),
         headerColor: Colors.white,
         options: AlphabetListViewOptions(
             scrollbarOptions: ScrollbarOptions(
