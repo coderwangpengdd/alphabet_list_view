@@ -92,9 +92,9 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
       child: Semantics(
         explicitChildNodes: true,
         child: Listener(
-          behavior: HitTestBehavior.opaque,
+          behavior: HitTestBehavior.translucent,
           onPointerMove: _pointerMoveEventHandler,
-          onPointerDown: _pointerDownEventHandler,
+          // onPointerDown: _pointerDownEventHandler,
           child: Column(
             mainAxisAlignment:
                 widget.alphabetScrollbarOptions.mainAxisAlignment,
@@ -103,25 +103,33 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
                 .map(
                   (symbol) => Semantics(
                     button: true,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 8, right: 24),
+                    child: GestureDetector(
+                      onTap: () {
+                        if (symbol != null) {
+                          _onSymbolTriggered(symbol);
+                        }
+                      },
+                      behavior: HitTestBehavior.opaque,
                       child: Container(
-                        color: Colors.transparent,
-                        alignment: Alignment.center,
-                        width: 12,
-                        key: _symbolKeys[symbol],
-                        child:
-                            widget.alphabetScrollbarOptions.symbolBuilder?.call(
-                                  context,
-                                  symbol,
-                                  _getSymbolState(symbol),
-                                ) ??
-                                DefaultScrollbarSymbol(
-                                  symbol: symbol,
-                                  fontFamily: widget.fontFamily,
-                                  fontSize: widget.fontSize,
-                                  state: _getSymbolState(symbol),
-                                ),
+                        padding: EdgeInsets.only(left: 8, right: 24),
+                        child: Container(
+                          color: Colors.transparent,
+                          alignment: Alignment.center,
+                          width: 12,
+                          key: _symbolKeys[symbol],
+                          child: widget.alphabetScrollbarOptions.symbolBuilder
+                                  ?.call(
+                                context,
+                                symbol,
+                                _getSymbolState(symbol),
+                              ) ??
+                              DefaultScrollbarSymbol(
+                                symbol: symbol,
+                                fontFamily: widget.fontFamily,
+                                fontSize: widget.fontSize,
+                                state: _getSymbolState(symbol),
+                              ),
+                        ),
                       ),
                     ),
                   ),
@@ -179,13 +187,13 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
     }
   }
 
-  void _pointerDownEventHandler(PointerEvent event) {
-    final String? symbol = _identifyTouchedSymbol(event, _symbolKeys);
-    debugPrint("点击 ：${symbol}");
-    if (symbol != null) {
-      _onSymbolTriggered(symbol);
-    }
-  }
+  // void _pointerDownEventHandler(PointerEvent event) {
+  //   final String? symbol = _identifyTouchedSymbol(event, _symbolKeys);
+  //   debugPrint("点击 ：${symbol}");
+  //   if (symbol != null) {
+  //     _onSymbolTriggered(symbol);
+  //   }
+  // }
 
   String? _identifyTouchedSymbol(
     PointerEvent details,
