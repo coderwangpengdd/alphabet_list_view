@@ -92,9 +92,9 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
       child: Semantics(
         explicitChildNodes: true,
         child: Listener(
-          behavior: HitTestBehavior.translucent,
+          behavior: HitTestBehavior.opaque,
           onPointerMove: _pointerMoveEventHandler,
-          onPointerDown: _pointerMoveEventHandler,
+          onPointerDown: _pointerDownEventHandler,
           child: Column(
             mainAxisAlignment:
                 widget.alphabetScrollbarOptions.mainAxisAlignment,
@@ -153,8 +153,7 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
     final Iterable<AlphabetListViewItemGroup> result =
         widget.items.where((item) => item.tag == symbol);
     if (result.isNotEmpty) {
-      if ((result.first.childrenDelegate.estimatedChildCount ?? 0) == 0 &&
-          !widget.alphabetScrollbarOptions.jumpToSymbolsWithNoEntries) {
+      if ((result.first.childrenDelegate.estimatedChildCount ?? 0) == 0) {
         return AlphabetScrollbarItemState.deactivated;
       } else if (result.first.tag == _selectedSymbol) {
         return AlphabetScrollbarItemState.active;
@@ -175,6 +174,14 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
 
   void _pointerMoveEventHandler(PointerEvent event) {
     final String? symbol = _identifyTouchedSymbol(event, _symbolKeys);
+    if (symbol != null) {
+      _onSymbolTriggered(symbol);
+    }
+  }
+
+  void _pointerDownEventHandler(PointerEvent event) {
+    final String? symbol = _identifyTouchedSymbol(event, _symbolKeys);
+    debugPrint("点击 ：${symbol}");
     if (symbol != null) {
       _onSymbolTriggered(symbol);
     }
@@ -214,7 +221,7 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
         (item) => (item.childrenDelegate.estimatedChildCount ?? 0) > 0,
       );
     }
-
+    debugPrint("结果： ${result}");
     if (result.isNotEmpty) {
       widget.symbolChangeNotifierScrollbar.value = symbol;
       setState(() => _selectedSymbol = symbol);
