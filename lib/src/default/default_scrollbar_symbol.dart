@@ -47,17 +47,17 @@ class DefaultScrollbarSymbol extends StatelessWidget {
     final textStyle = switch (state) {
       AlphabetScrollbarItemState.active => styleActive ??
           TextStyle(
-              color: Color(0xFF883FFF),
+              color: Color(0xFF7D6F8A),
               fontSize: fontSize,
               fontFamily: fontFamily),
       AlphabetScrollbarItemState.inactive => styleInactive ??
           TextStyle(
-              color: Color(0xFF883FFF),
+              color: Color(0xFF7D6F8A),
               fontSize: fontSize,
               fontFamily: fontFamily),
       AlphabetScrollbarItemState.deactivated => styleDeactivated ??
           TextStyle(
-              color: Color(0xFFDBD7D7),
+              color: Color(0xFF7D6F8A),
               fontSize: fontSize,
               fontFamily: fontFamily),
     };
