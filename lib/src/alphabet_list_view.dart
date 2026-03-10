@@ -19,6 +19,7 @@ class AlphabetListView extends StatefulWidget {
       this.top = 0,
       this.fontFamily,
       this.fontSize = 10,
+      this.paddingBottom,
       this.headerColor,
       this.headerPadding,
       this.textStyle});
@@ -33,6 +34,8 @@ class AlphabetListView extends StatefulWidget {
 
   // 侧边栏距离顶部距离
   final double? top;
+
+  final double? paddingBottom;
 
   final Color? headerColor;
 
@@ -114,6 +117,7 @@ class _AlphabetListViewState extends State<AlphabetListView> {
             symbolChangeNotifierList: _symbolChangeNotifierList,
             symbolChangeNotifierScrollbar: _symbolChangeNotifierScrollbar,
             textStyle: widget.textStyle,
+            paddingBottom: widget.paddingBottom,
             headerColor: widget.headerColor,
             headerPadding: widget.headerPadding,
           ),

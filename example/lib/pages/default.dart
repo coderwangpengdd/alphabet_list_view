@@ -20,6 +20,7 @@ class ExampleDefault extends StatelessWidget {
       child: AlphabetListView(
         items: _animals,
         top: 25,
+        paddingBottom: 200,
         headerPadding: EdgeInsets.fromLTRB(0, 8, 0, 8),
         headerColor: Colors.white,
         options: AlphabetListViewOptions(

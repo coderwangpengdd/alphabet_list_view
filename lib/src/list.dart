@@ -15,6 +15,7 @@ class AlphabetList extends StatefulWidget {
     required this.symbolChangeNotifierScrollbar,
     this.textStyle,
     this.headerColor,
+    this.paddingBottom,
     this.headerPadding,
     super.key,
     this.alphabetListOptions = const ListOptions(),
@@ -25,6 +26,8 @@ class AlphabetList extends StatefulWidget {
   final Color? headerColor;
 
   final TextStyle? textStyle;
+
+  final double? paddingBottom;
 
   /// List of item groups
   final List<AlphabetListViewItemGroup> items;
@@ -151,6 +154,8 @@ class _AlphabetListState extends State<AlphabetList> {
                 );
               },
             ),
+            SliverPadding(
+                padding: EdgeInsets.only(bottom: widget.paddingBottom ?? 0)),
             SliverToBoxAdapter(child: widget.alphabetListOptions.afterList),
           ],
         ),
