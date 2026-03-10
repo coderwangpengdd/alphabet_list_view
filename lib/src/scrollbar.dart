@@ -111,7 +111,7 @@ class _AlphabetScrollbarState extends State<AlphabetScrollbar> {
                       },
                       behavior: HitTestBehavior.opaque,
                       child: Container(
-                        padding: EdgeInsets.only(left: 8, right: 24),
+                        padding: EdgeInsets.only(left: 0, right: 0),
                         child: Container(
                           color: Colors.transparent,
                           alignment: Alignment.center,

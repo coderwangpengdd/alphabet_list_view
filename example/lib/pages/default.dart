@@ -26,7 +26,8 @@ class ExampleDefault extends StatelessWidget {
             listOptions: ListOptions(showSectionHeader: false),
             scrollbarOptions: ScrollbarOptions(
                 jumpToSymbolsWithNoEntries: true,
-                width: 44,
+                backgroundColor: Colors.red,
+                width: 36,
                 symbols: [
                   "A",
                   "B",
