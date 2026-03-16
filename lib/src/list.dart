@@ -85,7 +85,6 @@ class _AlphabetListState extends State<AlphabetList> {
   @override
   void initState() {
     super.initState();
-    debugPrint("666 : ${widget.items}");
     _customScrollKey = GlobalKey();
     widget.scrollController.addListener(_scrollControllerListener);
     widget.symbolChangeNotifierScrollbar
@@ -124,7 +123,6 @@ class _AlphabetListState extends State<AlphabetList> {
             ),
             ...widget.items.map(
               (item) {
-                debugPrint("--- :${item.tag}");
                 final bool useHeaderForEmptySection = widget.alphabetListOptions
                         .showSectionHeaderForEmptySections ||
                     !((item.childrenDelegate.estimatedChildCount ?? 0) == 0);
